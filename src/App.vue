@@ -21,23 +21,21 @@ export default {
 </script>
 
 <style>
-html, body {
+html, body, #app {
   margin: 0;
-  height: 100%;
+  padding: 0;
   width: 100%;
+  height: 100%;
+  background-color: #e9e9e9; 
 }
 
 #app {
   display: flex;
-  background-color: #e9e9e9; 
-  min-height: 100vh;
-  width: 100vw; 
-  margin: 0;
 }
 
 .content {
   flex-grow: 1;
-  padding: 40px; 
-  overflow: auto; 
+  padding: 20px;
+  overflow: auto; /* Allows content to scroll if it overflows */
 }
 </style>
