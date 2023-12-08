@@ -3,13 +3,14 @@
     <AppSidebar />
     <div class="content">
       <ListView/>
+      <RouterView/>
     </div>
   </div>
 </template>
 
 <script>
-import ListView from './components/ListView.vue';
 import AppSidebar from './components/AppSidebar.vue'; 
+import ListView from './components/ListView.vue';
 
 export default {
   name: 'App',
@@ -36,6 +37,6 @@ html, body, #app {
 .content {
   flex-grow: 1;
   padding: 20px;
-  overflow: auto; /* Allows content to scroll if it overflows */
+  overflow: auto; 
 }
 </style>

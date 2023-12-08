@@ -2,7 +2,7 @@
     <div class="dashboard">
         <header class="dashboard-header">
             <h1>Hello Evano 👋</h1>
-            <button class="add-customer">+</button>
+            <button class="add-customer" @click="goToAddCustomerForm">+</button>
         </header>
         <div class="stats-card">
             <div class="stat-item d-flex justify-content-center">
@@ -105,36 +105,19 @@
 </template>
 
 <script>
+import { useRouter } from 'vue-router';
+
 export default {
     name: "ListView",
-    data() {
+    setup() {
+        const router = useRouter();
+
+        const goToAddCustomerForm = () => {
+            router.push({ name: 'AddCustomerForm' }); 
+        };
+
         return {
-            stats: [
-                {
-                    title: "Total Customers",
-                    value: 5423,
-                    change: "16%",
-                    icon: "fa-users",
-                },
-                {
-                    title: "Members",
-                    value: 1893,
-                    change: "1%",
-                    icon: "fa-user-friends",
-                },
-                { title: "Active Now", value: 189, icon: "fa-user-check" },
-            ],
-            customers: [
-                {
-                    name: "Jane Cooper",
-                    company: "Microsoft",
-                    phone: "(255) 555-0118",
-                    email: "jane@microsoft.com",
-                    country: "United States",
-                    status: "Active",
-                },
-                // More customers...
-            ],
+            goToAddCustomerForm,
         };
     },
 };

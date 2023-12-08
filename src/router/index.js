@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import ListView from '@/components/ListView.vue'; // Import ListView as the customer page
+import AddCustomerForm from '@/components/AddCustomerForm.vue';
+
 
 const routes = [
   {
@@ -7,7 +9,11 @@ const routes = [
     name: 'Customers',
     component: ListView // Set ListView as the component for this route
   },
-  // ... other routes
+  {
+    path: '/add-customer',
+    name: 'AddCustomerForm',
+    component: AddCustomerForm
+  },
 ];
 
 const router = createRouter({
