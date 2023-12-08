@@ -21,17 +21,23 @@ export default {
 </script>
 
 <style>
+html, body {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
 #app {
   display: flex;
-  background-color: #f1f1f1; 
+  background-color: #e9e9e9; 
   min-height: 100vh;
+  width: 100vw; 
   margin: 0;
-
-
 }
+
 .content {
   flex-grow: 1;
-  padding: 20px; /* Adjust as necessary */
+  padding: 40px; 
+  overflow: auto; 
 }
-
 </style>
