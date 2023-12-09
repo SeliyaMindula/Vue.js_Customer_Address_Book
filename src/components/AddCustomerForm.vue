@@ -15,7 +15,9 @@
                     <input type="text" id="company" v-model="customer.company" placeholder="Company name" />
                 </div>
                 <div class="form-field">
-                    <input type="tel" id="phone" v-model="customer.phone" placeholder="Contact phone" />
+                    <input type="tel" id="phone" v-model="customer.phone" placeholder="contact phone">
+                    <span v-if="!isPhoneValid" class="validation-error">Phone number must be 10 digits.</span>
+
                 </div>
                 <div class="form-field">
                     <input type="email" id="email" v-model="customer.email" placeholder="Email address" />
@@ -46,7 +48,7 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { useRouter } from "vue-router";
 import axios from 'axios';
 
@@ -55,9 +57,10 @@ export default {
     setup() {
         const router = useRouter();
         const isFormVisible = ref(true);
-       
+
         const customer = ref({
             name: "",
+            phone: "",
             addresses: [{ number: "", street: "", cityState: "" }],
         });
 
@@ -66,16 +69,29 @@ export default {
         }
 
         function deleteAddress(index) {
-            customer.value.addresses.splice(index, 1);
+            if (customer.value.addresses.length > 1) {
+                customer.value.addresses.splice(index, 1);
+            } else {
+                alert("At least one address is required.");
+
+            }
         }
 
+        const isPhoneValid = computed(() => {
+            return customer.value.phone.length === 10;
+        });
+
         const submitForm = async () => {
-            try {
-                const response = await axios.post('http://localhost:3000/customers', customer.value);
-                console.log("Form submitted: ", response.data);
-                closeForm();
-            } catch (error) {
-                console.error("Error submitting form: ", error);
+            if (customer.value.phone && customer.value.phone.length === 10) {
+                try {
+                    const response = await axios.post('http://localhost:3000/customers', customer.value);
+                    console.log("Form submitted: ", response.data);
+                    closeForm();
+                } catch (error) {
+                    console.error("Error submitting form: ", error);
+                }
+            } else {
+                alert("Phone number must be 10 digits.");
             }
         };
 
@@ -87,6 +103,7 @@ export default {
         return {
             isFormVisible,
             customer,
+            isPhoneValid,
             addAddress,
             deleteAddress,
             submitForm,
@@ -198,5 +215,10 @@ button.delete-address {
     /* Larger padding for submit button */
     margin-top: 20px;
     /* Space above submit button */
+}
+
+.validation-error {
+    color: rgb(172, 44, 44);
+    font-size: 0.8rem;
 }
 </style>
