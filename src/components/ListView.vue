@@ -1,7 +1,7 @@
 <template>
     <div class="dashboard">
         <header class="dashboard-header">
-            <h1>Hello Evano 👋</h1>
+            <h1>Hello Evano 👋🏻,</h1>
             <button class="add-customer" @click="goToAddCustomerForm">+</button>
         </header>
         <div class="stats-card">
@@ -73,29 +73,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>T1</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>SL</td>
-                            <td>Active</td>
-                        </tr>
-                        <tr>
-                            <td>T2</td>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                            <td>SL</td>
-                            <td>Active</td>
-                        </tr>
-                        <tr>
-                            <td>T3</td>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                            <td>SL</td>
-                            <td>InActive</td>
+                        <tr v-for="customer in customers" :key="customer.id">
+                            <td>{{ customer.name }}</td>
+                            <td>{{ customer.company }}</td>
+                            <td>{{ customer.phone }}</td>
+                            <td>{{ customer.email }}</td>
+                            <td>{{ customer.country }}</td>
+                            <td>{{ customer.status }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -106,18 +90,32 @@
 
 <script>
 import { useRouter } from 'vue-router';
+import { ref, onMounted } from 'vue';
+import axios from 'axios';
 
 export default {
     name: "ListView",
     setup() {
         const router = useRouter();
+        const customers = ref([]);
 
+        const fetchCustomers = async () => {
+            try {
+                const response = await axios.get('http://localhost:3000/customers');
+                customers.value = response.data;
+            } catch (error) {
+                console.error("Error fetching customers:", error);
+            }
+        };
+
+        onMounted(fetchCustomers);
         const goToAddCustomerForm = () => {
-            router.push({ name: 'AddCustomerForm' }); 
+            router.push({ name: 'AddCustomerForm' });
         };
 
         return {
             goToAddCustomerForm,
+            customers
         };
     },
 };

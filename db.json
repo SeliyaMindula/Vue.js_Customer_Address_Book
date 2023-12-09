@@ -1,0 +1,34 @@
+{
+  "customers": [
+    {
+      "name": "Seliya Mindula Kumanayaka",
+      "addresses": [
+        {
+          "number": "fff",
+          "street": "fff",
+          "cityState": "Matara"
+        }
+      ],
+      "company": "test con",
+      "phone": "0713515771",
+      "email": "seliyakumanayaka18@gmail.com",
+      "country": "Sri Lanka",
+      "id": 1
+    },
+    {
+      "name": "sahan thilina",
+      "addresses": [
+        {
+          "number": "aaa",
+          "street": "bbbb",
+          "cityState": "Matara"
+        }
+      ],
+      "company": "test con",
+      "phone": "0769585774",
+      "email": "rostivesto@gufum.com",
+      "country": "Sri Lanka",
+      "id": 2
+    }
+  ]
+}
