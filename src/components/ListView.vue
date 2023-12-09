@@ -64,23 +64,53 @@
                 <table class="table table-responsive">
                     <thead>
                         <tr>
-                            <th scope="col">Customer Name</th>
-                            <th scope="col">Company</th>
-                            <th scope="col">Phone Number</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Country</th>
-                            <th scope="col">Status</th>
+                            <th class="text-secondary user-select-none" scope="col">Customer Name</th>
+                            <th class="text-secondary user-select-none" scope="col">Company</th>
+                            <th class="text-secondary user-select-none" scope="col">Phone Number</th>
+                            <th class="text-secondary user-select-none" scope="col">Email</th>
+                            <th class="text-secondary user-select-none" scope="col">Country</th>
+                            <th class="text-secondary user-select-none" scope="col">Status</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="customer in customers" :key="customer.id">
-                            <td>{{ customer.name }}</td>
-                            <td>{{ customer.company }}</td>
-                            <td>{{ customer.phone }}</td>
-                            <td>{{ customer.email }}</td>
-                            <td>{{ customer.country }}</td>
-                            <td>{{ customer.status }}</td>
-                        </tr>
+                        <template v-for="customer in customers" :key="customer.id">
+                            <tr @click="toggleDetails(customer)">
+                                <td class="fw-bolder user-select-none">{{ customer.name }}</td>
+                                <td class="fw-bolder user-select-none">{{ customer.company }}</td>
+                                <td class="fw-bolder user-select-none">{{ customer.phone }}</td>
+                                <td class="fw-bolder user-select-none">{{ customer.email }}</td>
+                                <td class="fw-bolder user-select-none">{{ customer.country }}</td>
+                                <td class="fw-bolder user-select-none">{{ customer.status }}</td>
+                                <td></td>
+                            </tr>
+                            <tr v-if="customer.detailsVisible">
+                                <td colspan="1"></td>
+                                <td class="fw-light" colspan="1">
+                                    <div v-for="(address, index) in customer.addresses"
+                                        :key="`address-${customer.id}-${index}`">
+                                        Address {{ index + 1 }}: 
+                                    </div>
+                                </td>
+                                <td class="fw-light" colspan="1">
+                                    <div v-for="(address, index) in customer.addresses"
+                                        :key="`address-${customer.id}-${index}`">
+                                        {{ address.number }}
+                                    </div>
+                                </td>
+                                <td class="fw-light" colspan="1">
+                                    <div v-for="(address, index) in customer.addresses"
+                                        :key="`address-${customer.id}-${index}`">
+                                        {{ address.street }}
+                                    </div>
+                                </td>
+                                <td class="fw-light" colspan="1">
+                                    <div v-for="(address, index) in customer.addresses"
+                                        :key="`address-${customer.id}-${index}`">
+                                        {{ address.cityState }}
+                                    </div>
+                                </td>
+                            </tr>
+                        </template>
                     </tbody>
                 </table>
             </div>
@@ -89,9 +119,9 @@
 </template>
 
 <script>
-import { useRouter } from 'vue-router';
-import { ref, onMounted } from 'vue';
-import axios from 'axios';
+import { useRouter } from "vue-router";
+import { ref, onMounted } from "vue";
+import axios from "axios";
 
 export default {
     name: "ListView",
@@ -101,21 +131,30 @@ export default {
 
         const fetchCustomers = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/customers');
-                customers.value = response.data;
+                const response = await axios.get("http://localhost:3000/customers");
+                // customers.value = response.data;
+                customers.value = response.data.map((customer) => ({
+                    ...customer,
+                    detailsVisible: false,
+                }));
             } catch (error) {
                 console.error("Error fetching customers:", error);
             }
         };
 
+        const toggleDetails = (customer) => {
+            customer.detailsVisible = !customer.detailsVisible;
+        };
+
         onMounted(fetchCustomers);
         const goToAddCustomerForm = () => {
-            router.push({ name: 'AddCustomerForm' });
+            router.push({ name: "AddCustomerForm" });
         };
 
         return {
             goToAddCustomerForm,
-            customers
+            customers,
+            toggleDetails,
         };
     },
 };

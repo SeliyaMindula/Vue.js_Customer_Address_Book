@@ -29,6 +29,26 @@
       "email": "rostivesto@gufum.com",
       "country": "Sri Lanka",
       "id": 2
+    },
+    {
+      "name": "test",
+      "addresses": [
+        {
+          "number": "aaa",
+          "street": "bbbb",
+          "cityState": "Matara"
+        },
+        {
+          "number": "aaa",
+          "street": "bbbb",
+          "cityState": "Matara"
+        }
+      ],
+      "phone": "0713515771",
+      "email": "seliyakumanayaka18@gmail.com",
+      "country": "Sri Lanka",
+      "company": "test con",
+      "id": 3
     }
   ]
 }
