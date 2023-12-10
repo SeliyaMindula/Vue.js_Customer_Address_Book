@@ -2,7 +2,7 @@
     <div class="dashboard">
         <header class="dashboard-header">
             <h1>Hello Evano 👋🏻,</h1>
-            <button class="add-customer" @click="goToAddCustomerForm">+</button>
+            <button class="add-customer" @click="goToAddCustomerForm">&plus;</button>
         </header>
         <div class="stats-card">
             <!-- <div class="stat-item d-flex justify-content-center"> -->
