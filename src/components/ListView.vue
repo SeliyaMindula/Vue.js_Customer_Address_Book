@@ -5,7 +5,6 @@
             <button class="add-customer" @click="goToAddCustomerForm">&plus;</button>
         </header>
         <div class="stats-card">
-            <!-- <div class="stat-item d-flex justify-content-center"> -->
             <div class="stat-item d-flex flex-column flex-md-row justify-content-center">
                 <div class="stat-icon bg-customers">
                     <i class="fas fa-users iconbackground"></i>
@@ -19,7 +18,6 @@
                 </div>
             </div>
             <div class="divider"></div>
-            <!-- <div class="stat-item d-flex justify-content-center"> -->
             <div class="stat-item d-flex flex-column flex-md-row justify-content-center">
                 <div class="stat-icon bg-members">
                     <i class="fas fa-user-friends iconbackground"></i>
@@ -33,7 +31,6 @@
                 </div>
             </div>
             <div class="divider"></div>
-            <!-- <div class="stat-item d-flex justify-content-center"> -->
             <div class="stat-item d-flex flex-column flex-md-row justify-content-center">
                 <div class="stat-icon bg-active">
                     <i class="fas fa-broadcast-tower iconbackground"></i>
@@ -62,11 +59,9 @@
 
             <div class="container pb-3">
                 <div class="row">
-                    <!-- <div class="col-sm-6 d-flex align-items-center"> -->
                     <div class="col-12 col-md-6 d-flex align-items-center">
                         <span class="activemember">Active members</span>
                     </div>
-                    <!-- <div class="col-sm-3"> -->
                     <div class="col-12 col-md-3 mt-2 mt-md-0">
                         <div class="input-group">
                             <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
@@ -76,7 +71,6 @@
                             </span>
                         </div>
                     </div>
-                    <!-- <div class="col-sm-3 d-flex justify-content-end"> -->
                     <div class="col-12 col-md-3 mt-2 mt-md-0 d-flex justify-content-end">
                         <button class="btn dropbtn">Sort by: Newest <i class="arrow ddown"></i></button>
                     </div>

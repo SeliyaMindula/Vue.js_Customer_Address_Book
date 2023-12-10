@@ -12,5 +12,4 @@ export default {
   addCustomer(customerData) {
     return apiClient.post('/customers', customerData);
   },
-  // You can add more functions for other API calls
 };
