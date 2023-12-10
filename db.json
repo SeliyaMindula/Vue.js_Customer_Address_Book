@@ -1,89 +1,124 @@
 {
   "customers": [
     {
-      "name": "Seliya Mindula Kumanayaka",
+      "name": "Jane Cooper",
+      "phone": "2255550118",
       "addresses": [
         {
-          "number": "fff",
-          "street": "fff",
-          "cityState": "Matara"
+          "number": "No 279",
+          "street": "Wellington street",
+          "cityState": "Melbourne, VIC"
+        },
+        {
+          "number": "No 29",
+          "street": "Blackburn Rd ",
+          "cityState": "Melbourne, VIC"
         }
       ],
-      "company": "test con",
-      "phone": "0713515771",
-      "email": "seliyakumanayaka18@gmail.com",
-      "country": "Sri Lanka",
+      "company": "Microsoft",
+      "email": "jane@microsoft.com",
+      "country": "United State",
       "id": 1
     },
     {
-      "name": "sahan thilina",
+      "name": "Eve Polastri",
+      "phone": "2759882758",
       "addresses": [
         {
-          "number": "aaa",
-          "street": "bbbb",
-          "cityState": "Matara"
+          "number": "No 126",
+          "street": "Sunset Boulevard",
+          "cityState": "Melbourne, VIC"
+        },
+        {
+          "number": "No 13",
+          "street": "Ocean Drive",
+          "cityState": "Perth, WA"
         }
       ],
-      "company": "test con",
-      "phone": "0769585774",
-      "email": "rostivesto@gufum.com",
-      "country": "Sri Lanka",
+      "company": "Amazon",
+      "email": "eve@microsoft.com",
+      "country": "Canada",
       "id": 2
     },
     {
-      "name": "test",
+      "name": "Raymond Reddington",
+      "phone": "2442217739",
       "addresses": [
         {
-          "number": "aaa",
-          "street": "bbbb",
-          "cityState": "Matara"
+          "number": "No 749",
+          "street": "Sunset Boulevard",
+          "cityState": "Sydney, NSW"
         },
         {
-          "number": "aaa",
-          "street": "bbbb",
-          "cityState": "Matara"
+          "number": "No 12",
+          "street": "Blackburn Rd",
+          "cityState": "Melbourne, VIC"
         }
       ],
-      "phone": "0713515771",
-      "email": "seliyakumanayaka18@gmail.com",
-      "country": "Sri Lanka",
-      "company": "test con",
+      "company": "Apple",
+      "email": "raymond@amazon.com",
+      "country": "United States",
       "id": 3
     },
     {
-      "name": "Seliya Mindula Kumanayaka",
-      "phone": "0713515775",
+      "name": "Eve Polastri",
+      "phone": "2974172935",
       "addresses": [
         {
-          "number": "aaa",
-          "street": "bbbb",
-          "cityState": "Matara"
+          "number": "No 340",
+          "street": "Sunset Boulevard",
+          "cityState": "Melbourne, VIC"
         },
         {
-          "number": "fff",
-          "street": "fff",
-          "cityState": "Matara"
+          "number": "No 737",
+          "street": "Fifth Avenue",
+          "cityState": "Adelaide, SA"
         }
       ],
-      "company": "test con",
-      "email": "seliyakumanayaka18@gmail.com",
-      "country": "Sri Lanka",
+      "company": "Apple",
+      "email": "eve@microsoft.com",
+      "country": "New Zealand",
       "id": 4
     },
     {
-      "name": "kasun kalhara",
-      "phone": "0769585774",
+      "name": "Eleanor Shellstrop",
+      "phone": "2740346166",
       "addresses": [
         {
-          "number": "aaa",
-          "street": "bbbb",
-          "cityState": "Matara"
+          "number": "No 425",
+          "street": "Fifth Avenue",
+          "cityState": "Brisbane, QLD"
+        },
+        {
+          "number": "No 529",
+          "street": "Fifth Avenue",
+          "cityState": "Brisbane, QLD"
         }
       ],
-      "company": "test con",
-      "email": "poknikorka@gufum.com",
-      "country": "Sri Lanka",
+      "company": "Google",
+      "email": "eleanor@google.com",
+      "country": "Australia",
       "id": 5
+    },
+    {
+      "name": "Eve Polastri",
+      "phone": "2654127519",
+      "addresses": [
+        {
+          "number": "No 338",
+          "street": "Ocean Drive",
+          "cityState": "Melbourne, VIC"
+        },
+        {
+          "number": "No 140",
+          "street": "Sunset Boulevard",
+          "cityState": "Sydney, NSW"
+        }
+      ],
+      "company": "Facebook",
+      "email": "eve@amazon.com",
+      "country": "United States",
+      "id": 6
     }
   ]
 }

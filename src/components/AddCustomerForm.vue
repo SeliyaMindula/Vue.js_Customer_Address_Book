@@ -28,6 +28,7 @@
                 <div class="fs-4 fw-normal text-start">Address Details</div>
                 <!-- Dynamic address input fields -->
                 <div class="form-section" v-for="(address, index) in customer.addresses" :key="index">
+                    <div class="fs-6 fw-light text-start">Address {{ index + 1 }} :</div>
                     <div class="address-fields">
                         <input type="text" placeholder="Number" v-model="address.number" />
                         <input type="text" placeholder="Street" v-model="address.street" />
@@ -95,6 +96,32 @@ export default {
             }
         };
 
+        // Add PUT functionality
+        // const updateCustomer = async () => {
+        //     if (customer.value.phone && customer.value.phone.length === 10) {
+        //         try {
+        //             const response = await axios.put('http://localhost:3000/customers/' + customer.value.id, customer.value);
+        //             console.log("Customer updated: ", response.data);
+        //             closeForm();
+        //         } catch (error) {
+        //             console.error("Error updating customer: ", error);
+        //         }
+        //     } else {
+        //         alert("Phone number must be 10 digits.");
+        //     }
+        // };
+
+        // Add DELETE functionality
+        // const deleteCustomer = async () => {
+        //     try {
+        //         const response = await axios.delete('http://localhost:3000/customers/' + customer.value.id);
+        //         console.log("Customer deleted: ", response.data);
+        //         closeForm();
+        //     } catch (error) {
+        //         console.error("Error deleting customer: ", error);
+        //     }
+        // };
+
         function closeForm() {
             isFormVisible.value = true;
             router.go(-1);
@@ -108,6 +135,9 @@ export default {
             deleteAddress,
             submitForm,
             closeForm,
+            // updateCustomer,
+            // deleteCustomer
+
         };
     },
 };

@@ -2,7 +2,6 @@
   <div id="app">
     <AppSidebar />
     <div class="content">
-      <!-- <ListView/> -->
       <RouterView/>
     </div>
   </div>
@@ -10,13 +9,11 @@
 
 <script>
 import AppSidebar from './components/AppSidebar.vue'; 
-// import ListView from './components/ListView.vue';
 
 export default {
   name: 'App',
   components: {
-    // ListView,
-    AppSidebar 
+    AppSidebar, 
   }
 }
 </script>
@@ -27,7 +24,7 @@ html, body, #app {
   padding: 0;
   width: 100%;
   height: 100%;
-  background-color: #f1fcef; 
+  background-color: #FAFBFF; 
 }
 
 #app {
