@@ -1,6 +1,6 @@
 # customer-address-book
 
-This is a Vue.js web application designed for managing customer addresses. It provides an intuitive interface for adding, updating, and deleting customer information and addresses. The application uses Vue.js for the frontend and `json-server` for a mock REST API backend.
+This is a Vue.js web application designed for managing customer addresses. The application uses Vue.js for the frontend and `json-server` for a mock REST API backend.
 
 ## Prerequisites
 
