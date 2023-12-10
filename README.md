@@ -15,7 +15,7 @@ Before running this project, make sure you have the following installed:
 To set up the project on your local machine:
 1. Clone the repository:
 
-```bash
+  bash
    git clone https://github.com/yourusername/customer-address-book.git
    cd customer-address-book
 ```
