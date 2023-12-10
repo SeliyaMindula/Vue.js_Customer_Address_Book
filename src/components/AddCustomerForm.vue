@@ -16,8 +16,7 @@
                 </div>
                 <div class="form-field">
                     <input type="tel" id="phone" v-model="customer.phone" placeholder="contact phone">
-                    <span v-if="!isPhoneValid" class="validation-error">Phone number must be 10 digits.</span>
-
+                    <span v-if="!isPhoneValid" class="validation-error">Phone number must be 10 digits.</span> 
                 </div>
                 <div class="form-field">
                     <input type="email" id="email" v-model="customer.email" placeholder="Email address" />
@@ -61,9 +60,32 @@ export default {
 
         const customer = ref({
             name: "",
+            company: "",
             phone: "",
+            email: "",
+            country: "",
             addresses: [{ number: "", street: "", cityState: "" }],
         });
+
+        const isNameValid = computed(() => customer.value.name.trim().length > 0);
+        const isCompanyValid = computed(() => customer.value.company.trim().length > 0);
+        const isPhoneValid = computed(() => customer.value.phone.length === 10 && /^\d+$/.test(customer.value.phone));
+        const isEmailValid = computed(() => /\S+@\S+\.\S+/.test(customer.value.email));
+        const isCountryValid = computed(() => customer.value.country.trim().length > 0);
+        const areAddressesValid = computed(() => customer.value.addresses.every(address => 
+            address.number.trim().length > 0 &&
+            address.street.trim().length > 0 &&
+            address.cityState.trim().length > 0
+        ));
+
+        const isFormValid = computed(() => 
+            isNameValid.value && 
+            isCompanyValid.value && 
+            isPhoneValid.value && 
+            isEmailValid.value && 
+            isCountryValid.value && 
+            areAddressesValid.value
+        );
 
         function addAddress() {
             customer.value.addresses.push({ number: "", street: "", cityState: "" });
@@ -74,16 +96,11 @@ export default {
                 customer.value.addresses.splice(index, 1);
             } else {
                 alert("At least one address is required.");
-
             }
         }
 
-        const isPhoneValid = computed(() => {
-            return customer.value.phone.length === 10;
-        });
-
         const submitForm = async () => {
-            if (customer.value.phone && customer.value.phone.length === 10) {
+            if (isFormValid.value) {
                 try {
                     const response = await axios.post('http://localhost:3000/customers', customer.value);
                     console.log("Form submitted: ", response.data);
@@ -92,7 +109,7 @@ export default {
                     console.error("Error submitting form: ", error);
                 }
             } else {
-                alert("Phone number must be 10 digits.");
+                alert("Please make sure all fields are filled out correctly.");
             }
         };
 
@@ -123,14 +140,20 @@ export default {
         // };
 
         function closeForm() {
-            isFormVisible.value = true;
+            isFormVisible.value = false;
             router.go(-1);
         }
 
         return {
             isFormVisible,
             customer,
+            isNameValid,
+            isCompanyValid,
             isPhoneValid,
+            isEmailValid,
+            isCountryValid,
+            areAddressesValid,
+            isFormValid,
             addAddress,
             deleteAddress,
             submitForm,
@@ -240,7 +263,7 @@ button.delete-address {
 }
 
 .validation-error {
-    color: rgb(172, 44, 44);
+    color: green;
     font-size: 0.8rem;
 }
 </style>
