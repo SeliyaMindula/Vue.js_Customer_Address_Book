@@ -1,7 +1,7 @@
 <template>
   <nav class="appsidebar">
     <!-- Sidebar Header -->
-    <div class="sidebar-header" style="padding-left: 10px;">
+    <div class="sidebar-header pb-4 pt-2" style="padding-left: 10px;">
       <i class="fas fa-tachometer-alt"></i> 
       <b><span style="font-size: larger;">Dashboard</span></b> <span style="font-size: small;">v0.1</span>
     </div>
@@ -73,13 +73,14 @@ export default {
   padding: 10px;
   border-radius: 5px;
   cursor: pointer;
+  color: rgb(82, 82, 82);
 }
 
 .appsidebar li:hover,
 .appsidebar li.active,
 .appsidebar .sidebar-item:hover,
 .appsidebar .sidebar-item.active {
-  background-color: rgb(75, 52, 94);
+  background-color: #5C34EC;
   color: white;
 }
 

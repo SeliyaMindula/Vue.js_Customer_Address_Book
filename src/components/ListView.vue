@@ -7,48 +7,57 @@
         <div class="stats-card">
             <div class="stat-item d-flex justify-content-center">
                 <div class="stat-icon bg-customers">
-                    <i class="fas fa-users"></i>
+                    <i class="fas fa-users iconbackground"></i>
                 </div>
-                <div class="stat-content">
-                    <p class="stat-title">Total Customers</p>
+                <div class="stat-content p-3">
+                    <p class="stat-title text-secondary">Total Customers</p>
                     <p class="stat-value">5,423</p>
                     <p class="stat-change">
-                        <i class="fas fa-arrow-up"></i> 16% this month
+                        <i class="fas fa-arrow-up up"></i>&nbsp;<span class="up"> 16% </span>&nbsp; this month
                     </p>
                 </div>
             </div>
             <div class="stat-item d-flex justify-content-center">
                 <div class="stat-icon bg-members">
-                    <i class="fas fa-user-friends"></i>
+                    <i class="fas fa-user-friends iconbackground"></i>
                 </div>
-                <div class="stat-content">
-                    <p class="stat-title">Members</p>
+                <div class="stat-content p-3">
+                    <p class="stat-title text-secondary">Members</p>
                     <p class="stat-value">1,893</p>
                     <p class="stat-change">
-                        <i class="fas fa-arrow-down"></i> 1% this month
+                        <i class="fas fa-arrow-down down"></i>&nbsp;<span class="down"> 1% </span>&nbsp; this month
                     </p>
                 </div>
             </div>
             <div class="stat-item d-flex justify-content-center">
                 <div class="stat-icon bg-active">
-                    <i class="fas fa-broadcast-tower"></i>
+                    <i class="fas fa-broadcast-tower iconbackground"></i>
                 </div>
-                <div class="stat-content">
-                    <p class="stat-title">Active Now</p>
+                <div class="stat-content p-3">
+                    <p class="stat-title text-secondary">Active Now</p>
                     <p class="stat-value">189</p>
-                    <!-- Place user avatars here -->
+                    <div class="user-avatars">
+                        <img src="https://www.theventuretours.com/wp-content/uploads/2020/03/avatar-icon-png-1-300x300.png"
+                            alt="User 1" class="user-avatar" />
+                        <img src="https://cdn2.iconfinder.com/data/icons/office-and-business-special-set-1/260/27-512.png"
+                            alt="User 2" class="user-avatar" />
+                        <img src=" https://cdn1.iconfinder.com/data/icons/avatar-97/32/avatar-04-512.png" alt="User 3"
+                            class="user-avatar" />
+                        <img src="https://cdn2.iconfinder.com/data/icons/office-and-business-special-set-1/260/27-512.png"
+                            alt="User 4" class="user-avatar" />
+                    </div>
                 </div>
             </div>
         </div>
         <!-- Customer list section -->
         <div class="stats-card2">
-            <div class="pb-2">
+            <div class="p-2 ">
                 <span class="fs-3 fw-bold">All Customers</span>
             </div>
             <div class="container pb-3">
                 <div class="row">
                     <div class="col-sm">
-                        <span class="fs-5 fw-normal text-success">Active members</span>
+                        <span class="activemember">Active members</span>
                     </div>
                     <div class="input-group rounded col-sm">
                         <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
@@ -75,41 +84,26 @@
                     <tbody>
                         <template v-for="customer in customers" :key="customer.id">
                             <tr @click="toggleDetails(customer)">
-                                <td class="fw-bolder user-select-none">{{ customer.name }}</td>
-                                <td class="fw-bolder user-select-none">{{ customer.company }}</td>
-                                <td class="fw-bolder user-select-none">{{ customer.phone }}</td>
-                                <td class="fw-bolder user-select-none">{{ customer.email }}</td>
-                                <td class="fw-bolder user-select-none">{{ customer.country }}</td>
-                                <td class="fw-bolder user-select-none">{{ customer.status }}</td>
-                                <td></td>
+                                <td class="tablecontent user-select-none justify-content-center">{{ customer.name }}</td>
+                                <td class="tablecontent user-select-none">{{ customer.company }}</td>
+                                <td class="tablecontent user-select-none">{{ customer.phone }}</td>
+                                <td class="tablecontent user-select-none">{{ customer.email }}</td>
+                                <td class="tablecontent user-select-none">{{ customer.country }}</td>
+                                <td> <span class="tablecontent user-select-none active-button ">Active </span></td>
+
+
                             </tr>
-                            <tr v-if="customer.detailsVisible">
-                                <td colspan="1"></td>
-                                <td class="fw-light" colspan="1">
-                                    <div v-for="(address, index) in customer.addresses"
-                                        :key="`address-${customer.id}-${index}`">
+                            <template v-if="customer.detailsVisible">
+                                <tr v-for="(address, index) in customer.addresses" :key="`address-${customer.id}-${index}`">
+                                    <td></td>
+                                    <td class="fw-light">
                                         Address {{ index + 1 }}: 
-                                    </div>
-                                </td>
-                                <td class="fw-light" colspan="1">
-                                    <div v-for="(address, index) in customer.addresses"
-                                        :key="`address-${customer.id}-${index}`">
-                                        {{ address.number }}
-                                    </div>
-                                </td>
-                                <td class="fw-light" colspan="1">
-                                    <div v-for="(address, index) in customer.addresses"
-                                        :key="`address-${customer.id}-${index}`">
-                                        {{ address.street }}
-                                    </div>
-                                </td>
-                                <td class="fw-light" colspan="1">
-                                    <div v-for="(address, index) in customer.addresses"
-                                        :key="`address-${customer.id}-${index}`">
-                                        {{ address.cityState }}
-                                    </div>
-                                </td>
-                            </tr>
+                                    </td>
+                                    <td class="fw-light">{{ address.street }}</td>
+                                    <td class="fw-light">{{ address.number }}</td>
+                                    <td class="fw-light">{{address.cityState }}</td>
+                                </tr>
+                            </template>
                         </template>
                     </tbody>
                 </table>
@@ -132,7 +126,6 @@ export default {
         const fetchCustomers = async () => {
             try {
                 const response = await axios.get("http://localhost:3000/customers");
-                // customers.value = response.data;
                 customers.value = response.data.map((customer) => ({
                     ...customer,
                     detailsVisible: false,
@@ -144,6 +137,12 @@ export default {
 
         const toggleDetails = (customer) => {
             customer.detailsVisible = !customer.detailsVisible;
+
+            customers.value.forEach((cust) => {
+                if (cust.id !== customer.id) {
+                    cust.detailsVisible = false;
+                }
+            });
         };
 
         onMounted(fetchCustomers);
@@ -194,7 +193,6 @@ export default {
 
 .stat-item {
     display: flex;
-    /* flex-direction: column; */
     align-items: center;
     flex: 1;
 }
@@ -210,19 +208,19 @@ export default {
 }
 
 .bg-customers {
-    background-color: #dff9fb;
+    background-color: #a8f3aa;
 }
 
 .bg-members {
-    background-color: #c7ecee;
+    background-color: #a8f3aa;
 }
 
 .bg-active {
-    background-color: #7ed6df;
+    background-color: #a8f3aa;
 }
 
 .stat-content {
-    text-align: center;
+    /* text-align: center; */
 }
 
 .stat-title {
@@ -242,22 +240,86 @@ export default {
     align-items: center;
 }
 
-.fa-arrow-up {
-    color: green;
+.up {
+    color: #51ec56;
 }
 
-.fa-arrow-down {
-    color: red;
+.down {
+    color: rgb(241, 59, 59);
 }
 
 .add-customer {
-    background-color: #4caf50;
-    border: none;
+    background-color: #a8f3aa;
+    border: 1px solid rgb(0, 182, 0);
     border-radius: 50%;
     width: 50px;
     height: 50px;
-    color: white;
+    color: rgb(0, 165, 0);
     font-size: 2rem;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.iconbackground {
+    color: rgb(255, 255, 255);
+    padding: .5em;
+    border-radius: .25em;
+}
+
+.activemember {
+    color: #44b848;
+    font-size: medium;
+}
+
+.tablecontent {
+    color: #4d4d4d;
+    font-weight: bold;
+}
+
+.user-avatars {
+    display: flex;
+    align-items: center;
+}
+
+.user-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: -10px;
+    border: 2px solid white;
+}
+
+.user-avatar:nth-child(1) {
+    z-index: 5;
+}
+
+.user-avatar:nth-child(2) {
+    z-index: 4;
+}
+
+.user-avatar:nth-child(3) {
+    z-index: 3;
+}
+
+.active-button {
+    background-color: #a8f3aa;
+    /* Green background */
+    border: 1px solid rgb(0, 182, 0);
+    width: 12px;
+    height: 5px;
+    padding: 5px 10px;
+    color: #44b848;
+    /* Add other styles such as font size, margins, etc. */
+}
+
+.inactive-button {
+    background-color: #FFCDD2;
+    /* Red background */
+    border: none;
+    border-radius: 12px;
+    padding: 5px 10px;
+    color: red;
 }
 </style>

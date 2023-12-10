@@ -49,6 +49,26 @@
       "country": "Sri Lanka",
       "company": "test con",
       "id": 3
+    },
+    {
+      "name": "Seliya Mindula Kumanayaka",
+      "phone": "0713515775",
+      "addresses": [
+        {
+          "number": "aaa",
+          "street": "bbbb",
+          "cityState": "Matara"
+        },
+        {
+          "number": "fff",
+          "street": "fff",
+          "cityState": "Matara"
+        }
+      ],
+      "company": "test con",
+      "email": "seliyakumanayaka18@gmail.com",
+      "country": "Sri Lanka",
+      "id": 4
     }
   ]
 }
