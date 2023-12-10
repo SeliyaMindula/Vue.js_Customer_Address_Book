@@ -174,7 +174,6 @@ export default {
 
 .address-details {
     background-color: #fff;
-    /* or any color you prefer */
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
@@ -184,19 +183,15 @@ export default {
 .address-fields {
     display: flex;
     gap: 10px;
-    /* Adjust gap as needed */
     margin-bottom: 10px;
-    /* Space between address fields and the delete button */
 }
 
 .address-fields input {
     border: none;
     border-bottom: 1px solid #ccc;
-    /* Light grey bottom border */
     padding: 8px;
     outline: none;
     width: 100%;
-    /* Adjust as needed */
 }
 
 .address-fields input[type="text"]:first-child {
@@ -206,15 +201,12 @@ export default {
 
 button.delete-address {
     background-color: #f44336;
-    /* Red background for delete button */
 }
 
 .submit-btn {
     width: 100%;
     padding: 15px;
-    /* Larger padding for submit button */
     margin-top: 20px;
-    /* Space above submit button */
 }
 
 .validation-error {

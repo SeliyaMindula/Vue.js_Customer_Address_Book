@@ -5,7 +5,8 @@
             <button class="add-customer" @click="goToAddCustomerForm">+</button>
         </header>
         <div class="stats-card">
-            <div class="stat-item d-flex justify-content-center">
+            <!-- <div class="stat-item d-flex justify-content-center"> -->
+            <div class="stat-item d-flex flex-column flex-md-row justify-content-center">
                 <div class="stat-icon bg-customers">
                     <i class="fas fa-users iconbackground"></i>
                 </div>
@@ -17,7 +18,9 @@
                     </p>
                 </div>
             </div>
-            <div class="stat-item d-flex justify-content-center">
+            <div class="divider"></div>
+            <!-- <div class="stat-item d-flex justify-content-center"> -->
+            <div class="stat-item d-flex flex-column flex-md-row justify-content-center">
                 <div class="stat-icon bg-members">
                     <i class="fas fa-user-friends iconbackground"></i>
                 </div>
@@ -29,7 +32,9 @@
                     </p>
                 </div>
             </div>
-            <div class="stat-item d-flex justify-content-center">
+            <div class="divider"></div>
+            <!-- <div class="stat-item d-flex justify-content-center"> -->
+            <div class="stat-item d-flex flex-column flex-md-row justify-content-center">
                 <div class="stat-icon bg-active">
                     <i class="fas fa-broadcast-tower iconbackground"></i>
                 </div>
@@ -54,23 +59,33 @@
             <div class="p-2 ">
                 <span class="fs-3 fw-bold">All Customers</span>
             </div>
+
             <div class="container pb-3">
                 <div class="row">
-                    <div class="col-sm">
+                    <!-- <div class="col-sm-6 d-flex align-items-center"> -->
+                    <div class="col-12 col-md-6 d-flex align-items-center">
                         <span class="activemember">Active members</span>
                     </div>
-                    <div class="input-group rounded col-sm">
-                        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
-                            aria-describedby="search-addon" />
-                        <span class="input-group-text border-0" id="search-addon">
-                            <i class="fas fa-search"></i>
-                        </span>
+                    <!-- <div class="col-sm-3"> -->
+                    <div class="col-12 col-md-3 mt-2 mt-md-0">
+                        <div class="input-group">
+                            <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                                aria-describedby="search-addon" />
+                            <span class="input-group-text border-0" id="search-addon">
+                                <i class="fas fa-search"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <!-- <div class="col-sm-3 d-flex justify-content-end"> -->
+                    <div class="col-12 col-md-3 mt-2 mt-md-0 d-flex justify-content-end">
+                        <button class="btn dropbtn">Sort by: Newest <i class="arrow ddown"></i></button>
                     </div>
                 </div>
             </div>
 
-            <div style="overflow-x: auto">
-                <table class="table table-responsive">
+
+            <div class="table-responsive">
+                <table class="table">
                     <thead>
                         <tr>
                             <th class="text-secondary user-select-none" scope="col">Customer Name</th>
@@ -89,7 +104,9 @@
                                 <td class="tablecontent user-select-none">{{ customer.phone }}</td>
                                 <td class="tablecontent user-select-none">{{ customer.email }}</td>
                                 <td class="tablecontent user-select-none">{{ customer.country }}</td>
-                                <td> <span class="tablecontent user-select-none active-button ">Active </span></td>
+                                <td class="text-center align-middle">
+                                    <span class="tablecontent user-select-none active-button">Active</span>
+                                </td>
 
 
                             </tr>
@@ -97,16 +114,29 @@
                                 <tr v-for="(address, index) in customer.addresses" :key="`address-${customer.id}-${index}`">
                                     <td></td>
                                     <td class="fw-light">
-                                        Address {{ index + 1 }}: 
+                                        Address {{ index + 1 }}:
                                     </td>
                                     <td class="fw-light">{{ address.street }}</td>
                                     <td class="fw-light">{{ address.number }}</td>
-                                    <td class="fw-light">{{address.cityState }}</td>
+                                    <td class="fw-light">{{ address.cityState }}</td>
                                 </tr>
                             </template>
                         </template>
                     </tbody>
                 </table>
+                <div class="data-pagination-wrapper">
+                    <div class="text-muted">Showing data 1 to 8 of 256K entiers</div>
+                    <div class="pagination">
+                        <a href="#">&lt;</a>
+                        <a href="#">1</a>
+                        <a href="#" class="active">2</a>
+                        <a href="#">3</a>
+                        <a href="#">4</a>
+                        <a href="#">...</a>
+                        <a href="#">40</a>
+                        <a href="#">&gt;</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -160,6 +190,7 @@ export default {
 </script>
 
 <style scoped>
+
 .dashboard {
     max-width: 1200px;
     margin: auto;
@@ -304,22 +335,124 @@ export default {
 }
 
 .active-button {
-    background-color: #a8f3aa;
-    /* Green background */
-    border: 1px solid rgb(0, 182, 0);
-    width: 12px;
-    height: 5px;
-    padding: 5px 10px;
-    color: #44b848;
-    /* Add other styles such as font size, margins, etc. */
+  background-color: #a8f3aa;
+  border: 1px solid rgb(0, 182, 0);
+  padding: 5px 10px; 
+  color: #44b848;
+  display: inline-block; 
+  text-align: center;
+  border-radius: 0.25rem;
+  font-weight: bold; 
 }
+
 
 .inactive-button {
     background-color: #FFCDD2;
-    /* Red background */
     border: none;
     border-radius: 12px;
     padding: 5px 10px;
     color: red;
 }
+
+.pagination {
+    padding-top: 10px;
+    display: inline-block;
+    float: right;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 4px 8px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+    margin: 0 2px;
+    font-size: 0.8rem;
+}
+
+.pagination a.active {
+    background-color: #5C34EC;
+    color: white;
+
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+.data-pagination-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.dropbtn {
+    background-color: #f5f5f5;
+    color: black;
+    padding: 6px 10px;
+    font-size: 14px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.arrow {
+    border: solid black;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+    margin-left: 5px;
+}
+
+.ddown {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
+.dropbtn:hover,
+.dropbtn:focus {
+    background-color: #e6e6e6;
+}
+
+.divider {
+  background-color: #e7e7e7; 
+  width: 1px; 
+  height: auto; 
+  margin: 1px 15px; 
+}
+
+ /* @media (max-width: 576px) {
+  .dashboard-header h1 {
+    font-size: 1.5rem; 
+  }
+  
+  .add-customer {
+    font-size: 1.5rem; 
+    padding: 0.5rem; 
+  }
+
+  .stat-item {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .stat-icon, .stat-content {
+    width: 100%; 
+    margin-bottom: 0.5rem;
+  }
+
+  .user-avatars img {
+    width: 20px; 
+    height: 20px;
+  }
+
+  .pagination {
+    font-size: 0.7rem; 
+  }
+}  */
 </style>
+

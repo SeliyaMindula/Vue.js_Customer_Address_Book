@@ -2,7 +2,7 @@
   <nav class="appsidebar">
     <!-- Sidebar Header -->
     <div class="sidebar-header pb-4 pt-2" style="padding-left: 10px;">
-      <i class="fas fa-tachometer-alt"></i> 
+      <i class="fas fa-tachometer-alt"></i>
       <b><span style="font-size: larger;">Dashboard</span></b> <span style="font-size: small;">v0.1</span>
     </div>
     <!-- Navigation List -->
@@ -17,11 +17,11 @@
         <span>Project</span>
         <i class="fas fa-chevron-right"></i>
       </li>
-      <router-link to="/customers" class="sidebar-item">
+      <li :class="{ active: activeItem === 'customers' }" @click="setActiveItem('customers')">
         <i class="fas fa-users"></i>
         <span>Customers</span>
         <i class="fas fa-chevron-right"></i>
-      </router-link>
+      </li>
       <li>
         <i class="fas fa-wallet"></i>
         <span>Income</span>
@@ -44,6 +44,19 @@
 <script>
 export default {
   name: "AppSidebar",
+  data() {
+    return {
+      activeItem: null,
+    };
+  },
+  methods: {
+    setActiveItem(item) {
+      this.activeItem = item;
+      if (item === 'customers') {
+        this.$router.push('/customers');
+      }
+    }
+  }
 };
 </script>
 
@@ -62,13 +75,14 @@ export default {
 .appsidebar ul {
   padding: 0;
   margin: 0;
-  list-style-type: none; 
+  list-style-type: none;
 }
 
-.appsidebar li, .appsidebar .sidebar-item {
+.appsidebar li,
+.appsidebar .sidebar-item {
   display: flex;
   align-items: center;
-  justify-content: space-between; 
+  justify-content: space-between;
   margin: 10px 0;
   padding: 10px;
   border-radius: 5px;
@@ -84,24 +98,29 @@ export default {
   color: white;
 }
 
+.active {
+  background-color: #5C34EC;
+  color: white;
+}
+
 .appsidebar a {
-  color: inherit; /* Ensure links are the same color as li elements */
-  text-decoration: none; /* Remove underline from links */
-  display: contents; /* Allow router-link to behave like its children */
+  color: inherit;
+  text-decoration: none;
+  display: contents;
 }
 
 .appsidebar i {
-  margin-right: 10px; /* Space between icon and text */
+  margin-right: 10px;
 }
 
-/* Ensure all icons are aligned and have space between them and the text */
+
 .appsidebar .fas {
-  width: 20px; /* Give icons a fixed width */
-  text-align: center; /* Center icons in their allocated space */
+  width: 20px;
+  text-align: center;
 }
 
-/* Adjust the space for the chevron icon */
+
 .appsidebar .fa-chevron-right {
-  margin-left: auto; /* Push the icon to the far right */
+  margin-left: auto;
 }
 </style>

@@ -69,6 +69,21 @@
       "email": "seliyakumanayaka18@gmail.com",
       "country": "Sri Lanka",
       "id": 4
+    },
+    {
+      "name": "kasun kalhara",
+      "phone": "0769585774",
+      "addresses": [
+        {
+          "number": "aaa",
+          "street": "bbbb",
+          "cityState": "Matara"
+        }
+      ],
+      "company": "test con",
+      "email": "poknikorka@gufum.com",
+      "country": "Sri Lanka",
+      "id": 5
     }
   ]
 }
