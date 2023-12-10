@@ -18,6 +18,7 @@ To set up the project on your local machine:
 ```bash
    git clone https://github.com/yourusername/customer-address-book.git
    cd customer-address-book
+```
   
 ## Install the necessary npm packages
 ```
